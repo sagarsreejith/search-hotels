@@ -4,7 +4,7 @@
  *
  */
 export const apiBaseUrl: string =
-  'http://www.mocky.io/v2';
+  'https://www.mocky.io/v2';
 
 /**
  *

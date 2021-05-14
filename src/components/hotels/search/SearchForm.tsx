@@ -139,7 +139,7 @@ export const SearchFrom = (
           name='from-date'
           value={fromDate}
           onChange={updateFromDate}
-          min='2021-05-05'
+          min='2018-05-05'
           max='2021-12-31'
         ></input>
       </div>

@@ -13,7 +13,7 @@ export const APP_CONSTANTS = {
   NETWORK_ERROR_MESSAGE:
     'Its not you, its us. Please try after sometime.',
   LOADING: 'Loading....',
-  DATE_FORMAT: 'yyyy-mm-DD',
+  DATE_FORMAT: 'yyyy-MM-DD',
   TOTAL_NO_OF_NIGHTS: 'Total Nights: ',
   HOTEL_FILTERS: {
     NAME: 'name',

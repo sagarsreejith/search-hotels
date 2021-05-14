@@ -1,9 +1,10 @@
-import {
-  ActionsEnum,
-} from '../types';
+import { ActionsEnum } from '../types';
 import { InitialState } from '../initialSate';
 import { AppState } from '../types/state';
-import { getNumberOfNight } from '../helpers';
+import {
+  filterHotelListbasedOnAvailableDate,
+  getNumberOfNight,
+} from '../helpers';
 /**
  *
  * `rootReducer` will handle the state manupoulatuon.
@@ -14,8 +15,6 @@ export const rootReducer = (
   action: any
 ): AppState => {
   switch (action.type) {
-  
-
     case ActionsEnum.NETWORK_ERROR: {
       return {
         ...state,
@@ -23,7 +22,8 @@ export const rootReducer = (
         hotelList: [],
         error: {
           hasError: true,
-          message: 'Please try After Some time',
+          message:
+            'Please try After Some time',
         },
       };
     }
@@ -31,62 +31,74 @@ export const rootReducer = (
     case ActionsEnum.UPDATE_FROM_DATE: {
       return {
         ...state,
-        fromDate: action.payload.fromDate
-      }
+        fromDate:
+          action.payload.fromDate,
+      };
     }
 
     case ActionsEnum.UPDATE_TO_DATE: {
       return {
         ...state,
-        toDate: action?.payload?.toDate
-      }
+        toDate: action?.payload?.toDate,
+      };
     }
 
     case ActionsEnum.UPDATE_HOTEL_LIST: {
       return {
         ...state,
-        hotelList: action?.payload?.hotelList,
+        hotelList: filterHotelListbasedOnAvailableDate(
+          action?.payload?.hotelList,
+          state?.fromDate
+        ),
         filters: {
           hotelName: '',
-          hotelPrice: ''
+          hotelPrice: '',
         },
         sortBy: {
           name: false,
-          price: false
+          price: false,
         },
         totalNumberOfNigts: getNumberOfNight(
           action?.payload?.fromDate,
           action?.payload?.toDate
-        )
-      }
+        ),
+      };
     }
-    
 
     case ActionsEnum.UPDATE_FILTERS: {
       return {
         ...state,
         filters: {
-          hotelName: action?.payload?.filters?.hotelName,
-          hotelPrice: action?.payload?.filters?.hotelPrice
-        }
-      }
+          hotelName:
+            action?.payload?.filters
+              ?.hotelName,
+          hotelPrice:
+            action?.payload?.filters
+              ?.hotelPrice,
+        },
+      };
     }
 
     case ActionsEnum.UPDATE_SORT_BY: {
       return {
         ...state,
         sortBy: {
-          name: action?.payload?.sortBy?.name,
-          price: action?.payload?.sortBy?.price
-        }
-      }
+          name:
+            action?.payload?.sortBy
+              ?.name,
+          price:
+            action?.payload?.sortBy
+              ?.price,
+        },
+      };
     }
-  
+
     case ActionsEnum.SHOW_LOADER: {
       return {
         ...state,
-        isLoading: action?.payload?.loaderStatus
-      }
+        isLoading:
+          action?.payload?.loaderStatus,
+      };
     }
 
     default:

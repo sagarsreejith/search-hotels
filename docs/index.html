@@ -546,12 +546,13 @@
 </code></pre>
 				<p>Based on the action finction its will dispath an event to the reducer ans update the state.</p>
 				<pre><code class="language-ts">
-<span style="color: #AF00DB">import</span><span style="color: #000000"> {</span>
-<span style="color: #000000">  </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">,</span>
-<span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;../types&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;../types&#039;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">InitialState</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;../initialSate&#039;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">AppState</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;../types/state&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">getNumberOfNight</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;../helpers&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">filterHotelListbasedOnAvailableDate</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">getNumberOfNight</span><span style="color: #000000">,</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;../helpers&#039;</span><span style="color: #000000">;</span>
 <span style="color: #008000">/**</span>
 <span style="color: #008000"> *</span>
 <span style="color: #008000"> * `rootReducer` will handle the state manupoulatuon.</span>
@@ -562,8 +563,6 @@
 <span style="color: #000000">  </span><span style="color: #001080">action</span><span style="color: #000000">: </span><span style="color: #267F99">any</span>
 <span style="color: #000000">): </span><span style="color: #267F99">AppState</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">  </span><span style="color: #AF00DB">switch</span><span style="color: #000000"> (</span><span style="color: #001080">action</span><span style="color: #000000">.</span><span style="color: #001080">type</span><span style="color: #000000">) {</span>
-<span style="color: #000000">  </span>
-
 <span style="color: #000000">    </span><span style="color: #AF00DB">case</span><span style="color: #000000"> </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">NETWORK_ERROR</span><span style="color: #000000">: {</span>
 <span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> {</span>
 <span style="color: #000000">        ...</span><span style="color: #001080">state</span><span style="color: #000000">,</span>
@@ -571,7 +570,8 @@
 <span style="color: #000000">        </span><span style="color: #001080">hotelList:</span><span style="color: #000000"> [],</span>
 <span style="color: #000000">        </span><span style="color: #001080">error:</span><span style="color: #000000"> {</span>
 <span style="color: #000000">          </span><span style="color: #001080">hasError:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">,</span>
-<span style="color: #000000">          </span><span style="color: #001080">message:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Please try After Some time&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">          </span><span style="color: #001080">message:</span>
+<span style="color: #000000">            </span><span style="color: #A31515">&#039;Please try After Some time&#039;</span><span style="color: #000000">,</span>
 <span style="color: #000000">        },</span>
 <span style="color: #000000">      };</span>
 <span style="color: #000000">    }</span>
@@ -579,62 +579,74 @@
 <span style="color: #000000">    </span><span style="color: #AF00DB">case</span><span style="color: #000000"> </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">UPDATE_FROM_DATE</span><span style="color: #000000">: {</span>
 <span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> {</span>
 <span style="color: #000000">        ...</span><span style="color: #001080">state</span><span style="color: #000000">,</span>
-<span style="color: #000000">        </span><span style="color: #001080">fromDate:</span><span style="color: #000000"> </span><span style="color: #001080">action</span><span style="color: #000000">.</span><span style="color: #001080">payload</span><span style="color: #000000">.</span><span style="color: #001080">fromDate</span>
-<span style="color: #000000">      }</span>
+<span style="color: #000000">        </span><span style="color: #001080">fromDate:</span>
+<span style="color: #000000">          </span><span style="color: #001080">action</span><span style="color: #000000">.</span><span style="color: #001080">payload</span><span style="color: #000000">.</span><span style="color: #001080">fromDate</span><span style="color: #000000">,</span>
+<span style="color: #000000">      };</span>
 <span style="color: #000000">    }</span>
 
 <span style="color: #000000">    </span><span style="color: #AF00DB">case</span><span style="color: #000000"> </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">UPDATE_TO_DATE</span><span style="color: #000000">: {</span>
 <span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> {</span>
 <span style="color: #000000">        ...</span><span style="color: #001080">state</span><span style="color: #000000">,</span>
-<span style="color: #000000">        </span><span style="color: #001080">toDate:</span><span style="color: #000000"> </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">toDate</span>
-<span style="color: #000000">      }</span>
+<span style="color: #000000">        </span><span style="color: #001080">toDate:</span><span style="color: #000000"> </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">toDate</span><span style="color: #000000">,</span>
+<span style="color: #000000">      };</span>
 <span style="color: #000000">    }</span>
 
 <span style="color: #000000">    </span><span style="color: #AF00DB">case</span><span style="color: #000000"> </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">UPDATE_HOTEL_LIST</span><span style="color: #000000">: {</span>
 <span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> {</span>
 <span style="color: #000000">        ...</span><span style="color: #001080">state</span><span style="color: #000000">,</span>
-<span style="color: #000000">        </span><span style="color: #001080">hotelList:</span><span style="color: #000000"> </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">hotelList</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">hotelList:</span><span style="color: #000000"> </span><span style="color: #795E26">filterHotelListbasedOnAvailableDate</span><span style="color: #000000">(</span>
+<span style="color: #000000">          </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">hotelList</span><span style="color: #000000">,</span>
+<span style="color: #000000">          </span><span style="color: #001080">state</span><span style="color: #000000">?.</span><span style="color: #001080">fromDate</span>
+<span style="color: #000000">        ),</span>
 <span style="color: #000000">        </span><span style="color: #001080">filters:</span><span style="color: #000000"> {</span>
 <span style="color: #000000">          </span><span style="color: #001080">hotelName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">          </span><span style="color: #001080">hotelPrice:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&#039;</span>
+<span style="color: #000000">          </span><span style="color: #001080">hotelPrice:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000">,</span>
 <span style="color: #000000">        },</span>
 <span style="color: #000000">        </span><span style="color: #001080">sortBy:</span><span style="color: #000000"> {</span>
 <span style="color: #000000">          </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span><span style="color: #000000">,</span>
-<span style="color: #000000">          </span><span style="color: #001080">price:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span>
+<span style="color: #000000">          </span><span style="color: #001080">price:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span><span style="color: #000000">,</span>
 <span style="color: #000000">        },</span>
 <span style="color: #000000">        </span><span style="color: #001080">totalNumberOfNigts:</span><span style="color: #000000"> </span><span style="color: #795E26">getNumberOfNight</span><span style="color: #000000">(</span>
 <span style="color: #000000">          </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">fromDate</span><span style="color: #000000">,</span>
 <span style="color: #000000">          </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">toDate</span>
-<span style="color: #000000">        )</span>
-<span style="color: #000000">      }</span>
+<span style="color: #000000">        ),</span>
+<span style="color: #000000">      };</span>
 <span style="color: #000000">    }</span>
-<span style="color: #000000">    </span>
 
 <span style="color: #000000">    </span><span style="color: #AF00DB">case</span><span style="color: #000000"> </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">UPDATE_FILTERS</span><span style="color: #000000">: {</span>
 <span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> {</span>
 <span style="color: #000000">        ...</span><span style="color: #001080">state</span><span style="color: #000000">,</span>
 <span style="color: #000000">        </span><span style="color: #001080">filters:</span><span style="color: #000000"> {</span>
-<span style="color: #000000">          </span><span style="color: #001080">hotelName:</span><span style="color: #000000"> </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">filters</span><span style="color: #000000">?.</span><span style="color: #001080">hotelName</span><span style="color: #000000">,</span>
-<span style="color: #000000">          </span><span style="color: #001080">hotelPrice:</span><span style="color: #000000"> </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">filters</span><span style="color: #000000">?.</span><span style="color: #001080">hotelPrice</span>
-<span style="color: #000000">        }</span>
-<span style="color: #000000">      }</span>
+<span style="color: #000000">          </span><span style="color: #001080">hotelName:</span>
+<span style="color: #000000">            </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">filters</span>
+<span style="color: #000000">              ?.</span><span style="color: #001080">hotelName</span><span style="color: #000000">,</span>
+<span style="color: #000000">          </span><span style="color: #001080">hotelPrice:</span>
+<span style="color: #000000">            </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">filters</span>
+<span style="color: #000000">              ?.</span><span style="color: #001080">hotelPrice</span><span style="color: #000000">,</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">      };</span>
 <span style="color: #000000">    }</span>
 
 <span style="color: #000000">    </span><span style="color: #AF00DB">case</span><span style="color: #000000"> </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">UPDATE_SORT_BY</span><span style="color: #000000">: {</span>
 <span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> {</span>
 <span style="color: #000000">        ...</span><span style="color: #001080">state</span><span style="color: #000000">,</span>
 <span style="color: #000000">        </span><span style="color: #001080">sortBy:</span><span style="color: #000000"> {</span>
-<span style="color: #000000">          </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">sortBy</span><span style="color: #000000">?.</span><span style="color: #001080">name</span><span style="color: #000000">,</span>
-<span style="color: #000000">          </span><span style="color: #001080">price:</span><span style="color: #000000"> </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">sortBy</span><span style="color: #000000">?.</span><span style="color: #001080">price</span>
-<span style="color: #000000">        }</span>
-<span style="color: #000000">      }</span>
+<span style="color: #000000">          </span><span style="color: #001080">name:</span>
+<span style="color: #000000">            </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">sortBy</span>
+<span style="color: #000000">              ?.</span><span style="color: #001080">name</span><span style="color: #000000">,</span>
+<span style="color: #000000">          </span><span style="color: #001080">price:</span>
+<span style="color: #000000">            </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">sortBy</span>
+<span style="color: #000000">              ?.</span><span style="color: #001080">price</span><span style="color: #000000">,</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">      };</span>
 <span style="color: #000000">    }</span>
-<span style="color: #000000">  </span>
+
 <span style="color: #000000">    </span><span style="color: #AF00DB">case</span><span style="color: #000000"> </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">SHOW_LOADER</span><span style="color: #000000">: {</span>
 <span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> {</span>
 <span style="color: #000000">        ...</span><span style="color: #001080">state</span><span style="color: #000000">,</span>
-<span style="color: #000000">        </span><span style="color: #001080">isLoading:</span><span style="color: #000000"> </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">loaderStatus</span>
-<span style="color: #000000">      }</span>
+<span style="color: #000000">        </span><span style="color: #001080">isLoading:</span>
+<span style="color: #000000">          </span><span style="color: #001080">action</span><span style="color: #000000">?.</span><span style="color: #001080">payload</span><span style="color: #000000">?.</span><span style="color: #001080">loaderStatus</span><span style="color: #000000">,</span>
+<span style="color: #000000">      };</span>
 <span style="color: #000000">    }</span>
 
 <span style="color: #000000">    </span><span style="color: #AF00DB">default</span><span style="color: #000000">:</span>
@@ -867,6 +879,68 @@
 </code></pre>
 				<p>The project documentation done with the help of <code>typedoc</code>.<a href="https://typedoc.org/">typedoc</a></p>
 				<hr>
+				<p>Handling environment for api calls is seprated in a file.</p>
+				<a href="#envts" id="envts" style="color: inherit; text-decoration: none;">
+					<h1>env.ts</h1>
+				</a>
+				<pre><code class="language-ts">
+<span style="color: #008000">/**</span>
+<span style="color: #008000"> *</span>
+<span style="color: #008000"> * `apiBaseUrl` exports apiBaseUrl for network call.</span>
+<span style="color: #008000"> *</span>
+<span style="color: #008000"> */</span>
+<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">apiBaseUrl</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000"> =</span>
+<span style="color: #000000">  </span><span style="color: #A31515">&#039;https://www.mocky.io/v2&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">/**</span>
+<span style="color: #008000"> *</span>
+<span style="color: #008000"> * `apiHeaders` exports Axios API header for calling API</span>
+<span style="color: #008000"> *</span>
+<span style="color: #008000"> */</span>
+<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">apiHeaders</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">    </span><span style="color: #A31515">&#039;Content-type&#039;</span><span style="color: #001080">:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;application/json&#039;</span>
+<span style="color: #000000">};</span>
+
+<span style="color: #008000">/**</span>
+<span style="color: #008000"> *</span>
+<span style="color: #008000"> * `apiUrls` const exports apiUrl.</span>
+<span style="color: #008000"> *</span>
+<span style="color: #008000"> */</span>
+<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">apiUrls</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">listOfHotels:</span><span style="color: #000000"> </span><span style="color: #A31515">`</span><span style="color: #0000FF">${</span><span style="color: #001080">apiBaseUrl</span><span style="color: #0000FF">}</span><span style="color: #A31515">/5eb8fcb12d0000d088357f2a`</span><span style="color: #000000">,</span>
+<span style="color: #000000">};</span>
+
+
+</code></pre>
+				<p>calling api with endpoint giving below</p>
+				<a href="#apits" id="apits" style="color: inherit; text-decoration: none;">
+					<h1>Api.ts</h1>
+				</a>
+				<pre><code class="language-ts">
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">axios</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;axios&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">apiHeaders</span><span style="color: #000000">, </span><span style="color: #001080">apiUrls</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;../env&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">GenericApiResponse</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">Hotel</span><span style="color: #000000">,</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;../types&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">/**</span>
+<span style="color: #008000"> *</span>
+<span style="color: #008000"> * Async function will call the hotel list API.</span>
+<span style="color: #008000"> *</span>
+<span style="color: #008000"> *</span>
+<span style="color: #008000"> * </span><span style="color: #0000FF">@retruns</span><span style="color: #008000"> Promise&lt;GenericApiResponse&lt;Hotel[]&gt;&gt;&gt;</span>
+<span style="color: #008000"> */</span>
+<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">getHotels</span><span style="color: #000000"> = </span><span style="color: #0000FF">async</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #001080">axios</span><span style="color: #000000">.</span><span style="color: #001080">get</span><span style="color: #000000">&lt;</span>
+<span style="color: #000000">    </span><span style="color: #001080">GenericApiResponse</span><span style="color: #000000">&lt;</span><span style="color: #001080">Hotel</span><span style="color: #000000">[]&gt;</span>
+<span style="color: #000000">  &gt;(</span><span style="color: #A31515">`</span><span style="color: #0000FF">${</span><span style="color: #001080">apiUrls</span><span style="color: #000000FF">.</span><span style="color: #001080">listOfHotels</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span><span style="color: #000000">, {</span>
+<span style="color: #000000">    </span><span style="color: #001080">headers:</span><span style="color: #000000"> </span><span style="color: #001080">apiHeaders</span><span style="color: #000000">,</span>
+<span style="color: #000000">  });</span>
+<span style="color: #000000">};</span>
+
+
+</code></pre>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
