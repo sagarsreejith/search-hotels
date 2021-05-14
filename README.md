@@ -2,8 +2,7 @@
 
 The main goal of the project is, to create a sample project in [React](https://reactjs.org/) with typscript. Based on user date range input, fetch `Hotel` list from mocky API and store the result in the `redux-store`.
 
-![Project Screenshot](/src/__mocks_/screens/application_screen_shot_desktop.png)
-Format: ![Desktop View](https://raw.githubusercontent.com/sagarsreejith/search-hotels/master/src/__mocks__/screens/application_screen_shot_desktop.png)
+![Project Screenshot](/src/__mocks__/screens/application_screen_shot_desktop.png)
 
 ---
 ## Libraries used in this project
@@ -832,6 +831,8 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### `npm run test`
+
+![Project Screenshot](/src/__mocks__/screens/unit-test.png)
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
