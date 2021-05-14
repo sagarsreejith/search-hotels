@@ -595,7 +595,7 @@ Once `Store` updated the components will re-render with its conditions ans updat
 
 All Objects have its on `model` can find in the `types` folder under `src` directory. Below you can find the state object modeling.
 
-# state.ts
+### state.ts
 ``` ts
 
 import { ApiError } from './api';
@@ -625,7 +625,7 @@ export interface AppState {
 
 `Unit Tests` are done with jest configuration file you can find below.
 
-# setupTests.ts
+### setupTests.ts
 ``` ts
 
 import '@testing-library/jest-dom';
@@ -638,7 +638,7 @@ configure({ adapter: new Adapter() });
 
 `API Call` i just mocked the response and axios and done it. you can find the code below.
 
-# axios.ts
+### axios.ts
 ``` ts
 
 import { AxiosResponse } from 'axios';
@@ -676,7 +676,7 @@ export default {
 ```
 One component test case you can find below.
 
-# DeetailsCard.test.ts
+### DetailsCard.test.ts
 ``` ts
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -824,7 +824,7 @@ The project documentation done with the help of `typedoc`.[typedoc](https://type
 
 Handling environment for api calls is seprated in a file.
 
-# env.ts
+### env.ts
 
 ``` ts
 
@@ -859,7 +859,7 @@ export const apiUrls = {
 
 calling api with endpoint giving below
 
-# Api.ts
+### Api.ts
 
 ``` ts
 
@@ -887,6 +887,57 @@ export const getHotels = async () => {
 
 
 ```
+
+# Sass
+For styling the entire application I am using `Sass` with out any frame work. You can find the `Sass` files under `scss` foler.
+
+---
+## SCSS Folder Structure
+
+    -- scss
+        -- __varibales.scss
+        -- __mixins.scss
+        -- __layout.scss
+        -- __input.scss
+---
+
+In this project I have used `Grid` and `flex` design. This site is fully responsive and the brek pint i have set `$breakpoint-tablet: 768px;` on `__varible.scss` and the curresponding media scss lying under `__mixins.scss` based on the breakpoint. Please see below.
+
+``` scss
+
+@import './variables';
+
+@media (max-width: $breakpoint-tablet) {
+  .grid-view {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mobile-grid-design {
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+  }
+  .search-container {
+    @extend .mobile-grid-design;
+      input[type='button'] {
+        float: none !important;
+        width: 100% !important;
+      }
+  }
+  .search-result-container, .hotel-list{
+    @extend .mobile-grid-design;
+  }
+  .sort-section {
+    @extend .mobile-grid-design;
+    height: auto !important;
+    row-gap: 20px;
+    div {
+      flex-direction: column;
+    }
+  }
+}
+
+```
+ 
 
 ## Installation
   ### Prerequisite

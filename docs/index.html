@@ -658,7 +658,7 @@
 				<p>Once <code>Store</code> updated the components will re-render with its conditions ans updated <code>state</code> values.</p>
 				<p>All Objects have its on <code>model</code> can find in the <code>types</code> folder under <code>src</code> directory. Below you can find the state object modeling.</p>
 				<a href="#statets" id="statets" style="color: inherit; text-decoration: none;">
-					<h1>state.ts</h1>
+					<h3>state.ts</h3>
 				</a>
 				<pre><code class="language-ts">
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">ApiError</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;./api&#039;</span><span style="color: #000000">;</span>
@@ -687,7 +687,7 @@
 </code></pre>
 				<p><code>Unit Tests</code> are done with jest configuration file you can find below.</p>
 				<a href="#setupteststs" id="setupteststs" style="color: inherit; text-decoration: none;">
-					<h1>setupTests.ts</h1>
+					<h3>setupTests.ts</h3>
 				</a>
 				<pre><code class="language-ts">
 <span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@testing-library/jest-dom&#039;</span><span style="color: #000000">;</span>
@@ -699,7 +699,7 @@
 </code></pre>
 				<p><code>API Call</code> i just mocked the response and axios and done it. you can find the code below.</p>
 				<a href="#axiosts" id="axiosts" style="color: inherit; text-decoration: none;">
-					<h1>axios.ts</h1>
+					<h3>axios.ts</h3>
 				</a>
 				<pre><code class="language-ts">
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">AxiosResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;axios&#039;</span><span style="color: #000000">;</span>
@@ -736,8 +736,8 @@
 
 </code></pre>
 				<p>One component test case you can find below.</p>
-				<a href="#deetailscardtestts" id="deetailscardtestts" style="color: inherit; text-decoration: none;">
-					<h1>DeetailsCard.test.ts</h1>
+				<a href="#detailscardtestts" id="detailscardtestts" style="color: inherit; text-decoration: none;">
+					<h3>DetailsCard.test.ts</h3>
 				</a>
 				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Provider</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;react-redux&#039;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">PersistGate</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;redux-persist/integration/react&#039;</span><span style="color: #000000">;</span>
@@ -881,7 +881,7 @@
 				<hr>
 				<p>Handling environment for api calls is seprated in a file.</p>
 				<a href="#envts" id="envts" style="color: inherit; text-decoration: none;">
-					<h1>env.ts</h1>
+					<h3>env.ts</h3>
 				</a>
 				<pre><code class="language-ts">
 <span style="color: #008000">/**</span>
@@ -914,7 +914,7 @@
 </code></pre>
 				<p>calling api with endpoint giving below</p>
 				<a href="#apits" id="apits" style="color: inherit; text-decoration: none;">
-					<h1>Api.ts</h1>
+					<h3>Api.ts</h3>
 				</a>
 				<pre><code class="language-ts">
 <span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">axios</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;axios&#039;</span><span style="color: #000000">;</span>
@@ -939,6 +939,55 @@
 <span style="color: #000000">  });</span>
 <span style="color: #000000">};</span>
 
+
+</code></pre>
+				<a href="#sass" id="sass" style="color: inherit; text-decoration: none;">
+					<h1>Sass</h1>
+				</a>
+				<p>For styling the entire application I am using <code>Sass</code> with out any frame work. You can find the <code>Sass</code> files under <code>scss</code> foler.</p>
+				<hr>
+				<a href="#scss-folder-structure" id="scss-folder-structure" style="color: inherit; text-decoration: none;">
+					<h2>SCSS Folder Structure</h2>
+				</a>
+				<pre><code><span style="color: #000000">-- </span><span style="color: #001080">scss</span>
+<span style="color: #000000">    -- </span><span style="color: #001080">__varibales</span><span style="color: #000000">.</span><span style="color: #001080">scss</span>
+<span style="color: #000000">    -- </span><span style="color: #001080">__mixins</span><span style="color: #000000">.</span><span style="color: #001080">scss</span>
+<span style="color: #000000">    -- </span><span style="color: #001080">__layout</span><span style="color: #000000">.</span><span style="color: #001080">scss</span>
+<span style="color: #000000">    -- </span><span style="color: #001080">__input</span><span style="color: #000000">.</span><span style="color: #001080">scss</span>
+</code></pre>
+				<hr>
+				<p>In this project I have used <code>Grid</code> and <code>flex</code> design. This site is fully responsive and the brek pint i have set <code>$breakpoint-tablet: 768px;</code> on <code>__varible.scss</code> and the curresponding media scss lying under <code>__mixins.scss</code> based on the breakpoint. Please see below.</p>
+				<pre><code class="language-scss">
+<span style="color: #AF00DB">@import</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;./variables&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #AF00DB">@media</span><span style="color: #000000"> (</span><span style="color: #FF0000">max-width</span><span style="color: #000000">: </span><span style="color: #FF0000">$breakpoint-tablet</span><span style="color: #000000">) {</span>
+<span style="color: #000000">  </span><span style="color: #800000">.grid-view</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #FF0000">grid-template-columns</span><span style="color: #000000">: </span><span style="color: #098658">1fr</span><span style="color: #000000"> </span><span style="color: #098658">1fr</span><span style="color: #000000">;</span>
+<span style="color: #000000">  }</span>
+
+<span style="color: #000000">  </span><span style="color: #800000">.mobile-grid-design</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #FF0000">grid-template-columns</span><span style="color: #000000">: </span><span style="color: #098658">1fr</span><span style="color: #000000"> </span><span style="color: #0000FF">!important</span><span style="color: #000000">;</span>
+<span style="color: #000000">    </span><span style="color: #FF0000">justify-items</span><span style="color: #000000">: </span><span style="color: #0451A5">center</span><span style="color: #000000"> </span><span style="color: #0000FF">!important</span><span style="color: #000000">;</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">  </span><span style="color: #800000">.search-container</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">@extend</span><span style="color: #000000"> </span><span style="color: #800000">.mobile-grid-design</span><span style="color: #000000">;</span>
+<span style="color: #000000">      </span><span style="color: #800000">input</span><span style="color: #000000">[</span><span style="color: #FF0000">type</span><span style="color: #000000">=</span><span style="color: #A31515">&#039;</span><span style="color: #000000">button</span><span style="color: #A31515">&#039;</span><span style="color: #000000">] {</span>
+<span style="color: #000000">        </span><span style="color: #FF0000">float</span><span style="color: #000000">: </span><span style="color: #0451A5">none</span><span style="color: #000000"> </span><span style="color: #0000FF">!important</span><span style="color: #000000">;</span>
+<span style="color: #000000">        </span><span style="color: #FF0000">width</span><span style="color: #000000">: </span><span style="color: #098658">100%</span><span style="color: #000000"> </span><span style="color: #0000FF">!important</span><span style="color: #000000">;</span>
+<span style="color: #000000">      }</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">  </span><span style="color: #800000">.search-result-container</span><span style="color: #000000">, </span><span style="color: #800000">.hotel-list</span><span style="color: #000000">{</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">@extend</span><span style="color: #000000"> </span><span style="color: #800000">.mobile-grid-design</span><span style="color: #000000">;</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">  </span><span style="color: #800000">.sort-section</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">@extend</span><span style="color: #000000"> </span><span style="color: #800000">.mobile-grid-design</span><span style="color: #000000">;</span>
+<span style="color: #000000">    </span><span style="color: #FF0000">height</span><span style="color: #000000">: </span><span style="color: #0451A5">auto</span><span style="color: #000000"> </span><span style="color: #0000FF">!important</span><span style="color: #000000">;</span>
+<span style="color: #000000">    </span><span style="color: #FF0000">row-gap</span><span style="color: #000000">: </span><span style="color: #098658">20px</span><span style="color: #000000">;</span>
+<span style="color: #000000">    </span><span style="color: #800000">div</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #FF0000">flex-direction</span><span style="color: #000000">: </span><span style="color: #0451A5">column</span><span style="color: #000000">;</span>
+<span style="color: #000000">    }</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">}</span>
 
 </code></pre>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
