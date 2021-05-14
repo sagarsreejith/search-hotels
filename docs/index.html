@@ -1,0 +1,475 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>hotel-search</title>
+	<meta name="description" content="Documentation for hotel-search">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">hotel-search</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>hotel-search</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#github-search" id="github-search" style="color: inherit; text-decoration: none;">
+					<h2>GitHub Search</h2>
+				</a>
+				<p>The main goal of the project is, to create a sample project in <a href="https://reactjs.org/">React</a>. Based on user input selection, fetch <code>User</code> or <code>Repository</code> data from GitHub API and store the result in the <code>redux-store</code>. If the API response is cached show the result from indexedDB.</p>
+				<hr>
+				<a href="#libraries-used-in-this-project" id="libraries-used-in-this-project" style="color: inherit; text-decoration: none;">
+					<h2>Libraries used in this project</h2>
+				</a>
+				<ul>
+					<li><a href="https://reactjs.org/">React</a></li>
+					<li><a href="https://redux.js.org/">Redux</a></li>
+					<li><a href="https://www.npmjs.com/package/redux-thunk">Redux Thunk</a></li>
+					<li><a href="https://www.npmjs.com/package/redux-thunk">Redux Router</a></li>
+					<li><a href="https://www.npmjs.com/package/redux-persist">Redux Persist</a></li>
+					<li><a href="https://lodash.com/">Lodash</a></li>
+					<li><a href="https://sass-lang.com/">Sass</a></li>
+				</ul>
+				<hr>
+				<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
+					<h2>Table of contents</h2>
+				</a>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h3><a href="#usage">Usage</a></h3>
+				</a>
+				<a href="#project-folder-structure" id="project-folder-structure" style="color: inherit; text-decoration: none;">
+					<h3><a href="#projectfolderstructure">Project folder structure</a></h3>
+				</a>
+				<a href="#implementation" id="implementation" style="color: inherit; text-decoration: none;">
+					<h3><a href="#implementation">Implementation</a></h3>
+				</a>
+				<hr>
+				<a href="#usage-1" id="usage-1" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<p>User can able to search <code>users</code> and <code>users repository</code> based on the <code>user input</code>.</p>
+				<p>This application has two <code>input</code> fields.</p>
+				<ol>
+					<li><p>Text Input[textbox]</p>
+						<p>User can enter a string. The string could be  <code>User&#39;s Name</code> or <code>User Repository Name</code>.</p>
+					</li>
+					<li><p>Select Input Box</p>
+						<p>User can <code>select</code> the search type from a <code>select box</code>. The option could be <code>Users</code> or <code>Repository</code>.</p>
+					</li>
+				</ol>
+				<p>Based on these two <code>user inputs</code> app will perform fetch data from GitHub API. After getting successfull response, the data stored in the <code>redux-store</code>. The app will pull the data from <code>redux-store</code> if the current serch text is present in the <code>redux-store</code>. For better experience add a <code>debounce</code> time for the <code>user input text box</code>. </p>
+				<hr>
+				<a href="#project-folder-structure-1" id="project-folder-structure-1" style="color: inherit; text-decoration: none;">
+					<h2>Project Folder Structure</h2>
+				</a>
+				<pre><code><span style="color: #000000">-- </span><span style="color: #001080">docs</span>
+<span style="color: #000000">-- </span><span style="color: #001080">public</span>
+<span style="color: #000000">    -- </span><span style="color: #001080">assets</span>
+<span style="color: #000000">-- </span><span style="color: #001080">src</span>
+<span style="color: #000000">    -- </span><span style="color: #001080">__mocks__</span>
+<span style="color: #000000">    -- </span><span style="color: #001080">actions</span>
+<span style="color: #000000">    -- </span><span style="color: #001080">components</span>
+<span style="color: #000000">    -- </span><span style="color: #001080">reducers</span>
+<span style="color: #000000">    -- </span><span style="color: #001080">scss</span>
+<span style="color: #000000">    -- </span><span style="color: #001080">services</span>
+<span style="color: #000000">    -- </span><span style="color: #001080">types</span>
+</code></pre>
+				<hr>
+				<a href="#implementation-1" id="implementation-1" style="color: inherit; text-decoration: none;">
+					<h2>Implementation</h2>
+				</a>
+				<a href="#app-initial-state" id="app-initial-state" style="color: inherit; text-decoration: none;">
+					<h3>App initial state</h3>
+				</a>
+				<a href="#initialstatets" id="initialstatets" style="color: inherit; text-decoration: none;">
+					<h4>initialState.ts</h4>
+				</a>
+				<p><code>initialState.ts</code> defines the <code>initial state</code> of the application.</p>
+				<pre><code class="language-ts">
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">SearchTypeEnum</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;./types&quot;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">AppState</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;./types/state&quot;</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">/**</span>
+<span style="color: #008000"> * This will be the application initial state</span>
+<span style="color: #008000"> */</span>
+<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">InitialState</span><span style="color: #000000">: </span><span style="color: #267F99">AppState</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">isLoading:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span><span style="color: #000000">, </span><span style="color: #008000">/* based in the value show the loader*/</span>
+<span style="color: #000000">  </span><span style="color: #001080">repositoriesToDisplay:</span><span style="color: #000000"> [], </span><span style="color: #008000">/* Store the latest API result of repositories and display this to `user`, if the type is `repoitory`*/</span>
+<span style="color: #000000">  </span><span style="color: #001080">usersToDisplay:</span><span style="color: #000000"> [], </span><span style="color: #008000">/* Store the latest API result of users and display this to user if the type is `user` */</span>
+<span style="color: #000000">  </span><span style="color: #001080">locallyStoredRepositories:</span><span style="color: #000000"> [], </span><span style="color: #008000">/* This will use to store, if the `repository` API resut is not in this array */</span>
+<span style="color: #000000">  </span><span style="color: #001080">locallyStoredUsers:</span><span style="color: #000000"> [], </span><span style="color: #008000">/* This will use to store, if the `user` API resut is not in this array */</span>
+<span style="color: #000000">  </span><span style="color: #001080">searcheHistory:</span><span style="color: #000000"> { </span><span style="color: #008000">/* This will use to store, if the `repository` or `user`, which `user` typed as an input*/</span>
+<span style="color: #000000">    </span><span style="color: #001080">repositories:</span><span style="color: #000000"> [],</span>
+<span style="color: #000000">    </span><span style="color: #001080">users:</span><span style="color: #000000"> []</span>
+<span style="color: #000000">  },</span>
+<span style="color: #000000">  </span><span style="color: #001080">searchType:</span><span style="color: #000000"> </span><span style="color: #001080">SearchTypeEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">USERS</span><span style="color: #000000">, </span><span style="color: #008000">/* This will use to store the selet box value*/</span>
+<span style="color: #000000">  </span><span style="color: #001080">currentSearchText:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000">, </span><span style="color: #008000">/* This will use to store the last serch string which user made*/</span>
+<span style="color: #000000">  </span><span style="color: #001080">error:</span><span style="color: #000000"> { </span><span style="color: #008000">/* This will use to store, if the network call failed */</span>
+<span style="color: #000000">    </span><span style="color: #001080">hasError:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">message:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Please try after some time!&#039;</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">};</span>
+
+</code></pre>
+				<a href="#storets" id="storets" style="color: inherit; text-decoration: none;">
+					<h4>store.ts</h4>
+				</a>
+				<p><code>Redux persist</code> takes app Redux state object and save it to <code>Persistence storage</code>. For z is wrap your app’s root reducers and pass it to the persistStore function it ensures your redux state is stored to persisted storage whenever it changes. <code>Redux Thunk middleware</code> allows us to <code>write action creators</code> that return a function instead of an action. The <code>thunk</code> can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. The inner function receives the store methods dispatch and getState as parameters. <code>persistConfig</code> sorage we are using <code>localforage</code>.</p>
+				<pre><code class="language-ts">
+<span style="color: #AF00DB">import</span><span style="color: #000000"> {</span>
+<span style="color: #000000"> </span><span style="color: #001080">createStore</span><span style="color: #000000">,</span>
+<span style="color: #000000"> </span><span style="color: #001080">applyMiddleware</span><span style="color: #000000">,</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;redux&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">composeWithDevTools</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;redux-devtools-extension&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">thunk</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;redux-thunk&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> {</span>
+<span style="color: #000000"> </span><span style="color: #001080">persistStore</span><span style="color: #000000">,</span>
+<span style="color: #000000"> </span><span style="color: #001080">persistReducer</span><span style="color: #000000">,</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;redux-persist&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">localforage</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;localforage&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">rootReducer</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;./reducers/RootReducer&#039;</span><span style="color: #000000">;</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">persistConfig</span><span style="color: #000000"> = {</span>
+<span style="color: #000000"> </span><span style="color: #001080">key:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;root&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000"> </span><span style="color: #001080">storage:</span><span style="color: #000000"> </span><span style="color: #001080">localforage</span><span style="color: #000000">,</span>
+<span style="color: #000000">};</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">persistedReducer</span><span style="color: #000000"> = </span><span style="color: #795E26">persistReducer</span><span style="color: #000000">(</span>
+<span style="color: #000000"> </span><span style="color: #001080">persistConfig</span><span style="color: #000000">,</span>
+<span style="color: #000000"> </span><span style="color: #001080">rootReducer</span>
+<span style="color: #000000">);</span>
+<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">store</span><span style="color: #000000"> = </span><span style="color: #795E26">createStore</span><span style="color: #000000">(</span>
+<span style="color: #000000"> </span><span style="color: #001080">persistedReducer</span><span style="color: #000000">,</span>
+<span style="color: #000000"> </span><span style="color: #795E26">composeWithDevTools</span><span style="color: #000000">(</span><span style="color: #795E26">applyMiddleware</span><span style="color: #000000">(</span><span style="color: #001080">thunk</span><span style="color: #000000">))</span>
+<span style="color: #000000">);</span>
+<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">persistor</span><span style="color: #000000"> = </span><span style="color: #795E26">persistStore</span><span style="color: #000000">(</span><span style="color: #001080">store</span><span style="color: #000000">);</span>
+
+</code></pre>
+				<p>The<code>rootAction</code> action creator will handlle the <code>api</code> call and read from localstore operations and the reullt will dispatch to <code>rootReducer</code> with appropriate <code>action.type</code> and <code>action.payload</code>.</p>
+				<p>Finally the reducer will change the <code>state</code> based on <code>type</code> and <code>payload</code> values.</p>
+				<a href="#indextsx" id="indextsx" style="color: inherit; text-decoration: none;">
+					<h4>index.tsx</h4>
+				</a>
+				<pre><code class="language-ts">
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">React</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;react&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">ReactDOM</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;react-dom&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;./index.scss&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">App</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;./App&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Provider</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;react-redux&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">store</span><span style="color: #000000">, </span><span style="color: #001080">persistor</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;./store&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">PersistGate</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;redux-persist/integration/react&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #001080">ReactDOM</span><span style="color: #000000">.</span><span style="color: #795E26">render</span><span style="color: #000000">(</span>
+<span style="color: #000000">  &lt;</span><span style="color: #001080">React</span><span style="color: #000000">.</span><span style="color: #001080">StrictMode</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">    &lt;</span><span style="color: #001080">Provider</span><span style="color: #000000"> </span><span style="color: #001080">store</span><span style="color: #000000">={</span><span style="color: #001080">store</span><span style="color: #000000">}&gt;</span>
+<span style="color: #000000">      &lt;</span><span style="color: #001080">PersistGate</span>
+<span style="color: #000000">        </span><span style="color: #001080">loading</span><span style="color: #000000">={</span><span style="color: #001080">null</span><span style="color: #000000">}</span>
+<span style="color: #000000">        </span><span style="color: #001080">persistor</span><span style="color: #000000">={</span><span style="color: #001080">persistor</span><span style="color: #000000">}</span>
+<span style="color: #000000">      &gt;</span>
+<span style="color: #000000">        &lt;</span><span style="color: #001080">App</span><span style="color: #000000"> /&gt;</span>
+<span style="color: #000000">      &lt;/</span><span style="color: #001080">PersistGate</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">    &lt;/</span><span style="color: #001080">Provider</span><span style="color: #000000">&gt;</span>
+<span style="color: #000000">  &lt;/</span><span style="color: #001080">React</span><span style="color: #000000">.</span><span style="color: #001080">StrictMode</span><span style="color: #000000">&gt;,</span>
+<span style="color: #000000">  </span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #795E26">getElementById</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;root&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">);</span>
+
+</code></pre>
+				<a href="#serachinputtsx" id="serachinputtsx" style="color: inherit; text-decoration: none;">
+					<h3>SerachInput.tsx</h3>
+				</a>
+				<p>The below searchInput component, call the <code>triggeSearch</code> function on every <code>keyUp</code>. The <code>triggerSearch</code> is a <code>loadsh _.debounce</code> function have a debounce time of 900ms. This function will check the <code>input text</code> length and if it greter than 2 charectors it will dispatch an actions for API call / localstorage search based <code>hasData</code> function return value.</p>
+				<pre><code class="language-ts">
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">KeyboardEvent</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;react&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">_</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;lodash&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">getDataFromApi</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">getDataFromLocalStorage</span><span style="color: #000000">,</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;../../../actions/RootActions&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">useDispatch</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;react-redux&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">SearchTypeEnum</span><span style="color: #000000">,</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;../../../types&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">APP_CONSTANTS</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;../../../appConstants&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">AppState</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;../../../types/state&#039;</span><span style="color: #000000">;</span>
+<span style="color: #008000">/**</span>
+<span style="color: #008000"> * SearchInput, is the definition of our inpuit component,</span>
+<span style="color: #008000"> * which will be used to type term of our search.</span>
+<span style="color: #008000"> * </span>
+<span style="color: #008000"> * </span><span style="color: #0000FF">@param</span><span style="color: #008000"> </span><span style="color: #267F99">{AppState}</span><span style="color: #008000"> </span><span style="color: #001080">state</span><span style="color: #008000"> - first param</span>
+<span style="color: #008000"> * </span>
+<span style="color: #008000"> * </span><span style="color: #0000FF">@return</span><span style="color: #008000"> </span><span style="color: #267F99">{JSX.Element}</span>
+<span style="color: #008000"> */</span>
+
+<span style="color: #000000">  ......</span>
+<span style="color: #000000">  </span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">return</span><span style="color: #000000"> (</span>
+<span style="color: #000000">    &lt;</span><span style="color: #001080">input</span>
+<span style="color: #000000">      </span><span style="color: #001080">type</span><span style="color: #000000">=</span><span style="color: #A31515">&#039;text&#039;</span>
+<span style="color: #000000">      </span><span style="color: #001080">defaultValue</span><span style="color: #000000">={</span><span style="color: #001080">defaultInputValue</span><span style="color: #000000">}</span>
+<span style="color: #000000">      </span><span style="color: #001080">placeholder</span><span style="color: #000000">={</span>
+<span style="color: #000000">        APP_CONSTANTS.SEARCH.INPUT.</span><span style="color: #001080">PLACEHOLER</span>
+<span style="color: #000000">      }</span>
+<span style="color: #000000">      </span><span style="color: #001080">onKeyUp</span><span style="color: #000000">={</span><span style="color: #001080">triggerSearch</span><span style="color: #000000">}</span>
+<span style="color: #000000">    /&gt;</span>
+<span style="color: #000000">  );</span>
+<span style="color: #000000">}</span>
+
+<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #AF00DB">default</span><span style="color: #000000"> </span><span style="color: #001080">SearchInput</span><span style="color: #000000">;</span>
+
+</code></pre>
+				<p><code>isDataStored</code> function will check the input string is present in the store based on <code>Current select box selection</code> and return a <code>boolean</code>.</p>
+				<pre><code class="language-ts"><span style="color: #000000">....</span>
+
+<span style="color: #008000">/**</span>
+<span style="color: #008000">   *</span>
+<span style="color: #008000">   * `hasData` will return a boolean value based on the data present in the serchHistory.</span>
+<span style="color: #008000">   *</span>
+<span style="color: #008000">   * </span><span style="color: #0000FF">@param</span><span style="color: #008000"> </span><span style="color: #267F99">{string}</span><span style="color: #008000"> </span><span style="color: #001080">searchText</span><span style="color: #008000"> - first inpus as {string}</span>
+<span style="color: #008000">   *</span>
+<span style="color: #008000">   * </span><span style="color: #0000FF">@returns</span><span style="color: #008000"> </span><span style="color: #267F99">{boolean}</span>
+<span style="color: #008000">   *</span>
+<span style="color: #008000">   */</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">isDataStored</span><span style="color: #000000"> = (</span><span style="color: #001080">searchText</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">) : </span><span style="color: #267F99">boolean</span><span style="color: #000000">  </span><span style="color: #0000FF">=&gt;</span>
+<span style="color: #000000">    </span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">searchType</span><span style="color: #000000"> === </span><span style="color: #001080">SearchTypeEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">USERS</span>
+<span style="color: #000000">      ? !!</span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">searcheHistory</span><span style="color: #000000">.</span><span style="color: #001080">users</span><span style="color: #000000">.</span><span style="color: #795E26">includes</span><span style="color: #000000">(</span>
+<span style="color: #000000">          </span><span style="color: #001080">searchText</span>
+<span style="color: #000000">        )</span>
+<span style="color: #000000">      : !!</span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">searcheHistory</span><span style="color: #000000">.</span><span style="color: #001080">repositories</span><span style="color: #000000">.</span><span style="color: #795E26">includes</span><span style="color: #000000">(</span>
+<span style="color: #000000">          </span><span style="color: #001080">searchText</span>
+<span style="color: #000000">        );</span>
+<span style="color: #000000">....</span>
+
+</code></pre>
+				<p>Based on the return value of <code>hasData</code> function, the <code>triggerSearch</code> function will call an action creator (<code>getDataFromLocalStorage</code> or <code>getDataFromApi</code>). </p>
+				<pre><code class="language-ts"><span style="color: #000000">....</span>
+
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">triggerSearch</span><span style="color: #000000"> = </span><span style="color: #001080">_</span><span style="color: #000000">.</span><span style="color: #795E26">debounce</span><span style="color: #000000">(</span>
+<span style="color: #000000">    (</span><span style="color: #001080">event</span><span style="color: #000000">: </span><span style="color: #267F99">KeyboardEvent</span><span style="color: #000000">&lt;</span><span style="color: #267F99">HTMLInputElement</span><span style="color: #000000">&gt;) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">element</span><span style="color: #000000"> = </span><span style="color: #001080">event</span><span style="color: #000000">.</span><span style="color: #001080">target</span><span style="color: #000000"> </span><span style="color: #AF00DB">as</span><span style="color: #000000"> </span><span style="color: #267F99">HTMLInputElement</span><span style="color: #000000">;</span>
+<span style="color: #000000">      </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">element</span><span style="color: #000000">?.</span><span style="color: #001080">value</span><span style="color: #000000">?.</span><span style="color: #001080">length</span><span style="color: #000000"> &gt; </span><span style="color: #098658">2</span><span style="color: #000000">) {</span>
+<span style="color: #000000">        !</span><span style="color: #795E26">isDataStored</span><span style="color: #000000">(</span><span style="color: #001080">element</span><span style="color: #000000">?.</span><span style="color: #001080">value</span><span style="color: #000000">)</span>
+<span style="color: #000000">          ? </span><span style="color: #795E26">dispatch</span><span style="color: #000000">(</span>
+<span style="color: #000000">              </span><span style="color: #795E26">getDataFromApi</span><span style="color: #000000">(</span>
+<span style="color: #000000">                </span><span style="color: #001080">element</span><span style="color: #000000">.</span><span style="color: #001080">value</span><span style="color: #000000">,</span>
+<span style="color: #000000">                </span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">searchType</span>
+<span style="color: #000000">              )</span>
+<span style="color: #000000">            )</span>
+<span style="color: #000000">          : </span><span style="color: #795E26">dispatch</span><span style="color: #000000">(</span>
+<span style="color: #000000">              </span><span style="color: #795E26">getDataFromLocalStorage</span><span style="color: #000000">(</span>
+<span style="color: #000000">                </span><span style="color: #001080">element</span><span style="color: #000000">.</span><span style="color: #001080">value</span><span style="color: #000000">,</span>
+<span style="color: #000000">                </span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">searchType</span>
+<span style="color: #000000">              )</span>
+<span style="color: #000000">            );</span>
+<span style="color: #000000">      } </span><span style="color: #AF00DB">else</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #795E26">dispatch</span><span style="color: #000000">({</span>
+<span style="color: #000000">          </span><span style="color: #001080">type:</span>
+<span style="color: #000000">            </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">CLEAR_REPO_OR_USER_LIST</span><span style="color: #000000">,</span>
+<span style="color: #000000">          </span><span style="color: #001080">payload:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">            </span><span style="color: #001080">SearchText:</span><span style="color: #000000"> </span><span style="color: #001080">element</span><span style="color: #000000">.</span><span style="color: #001080">value</span><span style="color: #000000">,</span>
+<span style="color: #000000">            </span><span style="color: #001080">searchType:</span><span style="color: #000000"> </span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">searchType</span><span style="color: #000000">,</span>
+<span style="color: #000000">          },</span>
+<span style="color: #000000">        });</span>
+<span style="color: #000000">      }</span>
+<span style="color: #000000">    },</span>
+<span style="color: #000000">    </span><span style="color: #098658">900</span>
+<span style="color: #000000">  );</span>
+
+<span style="color: #000000">....</span>
+</code></pre>
+				<p><code>getDataFromLocalStorage</code> function will dispatch an action to the rootReducer.   </p>
+				<pre><code class="language-ts">
+<span style="color: #000000">....</span>
+
+<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">getDataFromLocalStorage</span><span style="color: #000000"> = (</span>
+<span style="color: #000000">  </span><span style="color: #001080">searchText</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">searchType</span><span style="color: #000000">: </span><span style="color: #267F99">string</span>
+<span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #0000FF">async</span><span style="color: #000000"> (</span><span style="color: #001080">dispatch</span><span style="color: #000000">: </span><span style="color: #267F99">Dispatch</span><span style="color: #000000">&lt;</span><span style="color: #267F99">ActionType</span><span style="color: #000000">&gt;) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">payload</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">    </span><span style="color: #001080">searchText</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">searchType</span><span style="color: #000000">,</span>
+<span style="color: #000000">  };</span>
+<span style="color: #000000">  </span><span style="color: #795E26">dispatch</span><span style="color: #000000">({</span>
+<span style="color: #000000">    </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">SAVE_AND_SHOW_LOADER</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">payload</span><span style="color: #000000">,</span>
+<span style="color: #000000">  });</span>
+<span style="color: #000000">  </span><span style="color: #795E26">dispatch</span><span style="color: #000000">({</span>
+<span style="color: #000000">    </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">LOAD_FROM_HISTORY</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">payload</span><span style="color: #000000">,</span>
+<span style="color: #000000">  });</span>
+<span style="color: #000000">};</span>
+
+<span style="color: #000000">....</span>
+
+</code></pre>
+				<p>The reducer makes changes to the application state based on the action <code>type</code> and update the store.</p>
+				<pre><code class="language-ts"><span style="color: #000000">...</span>
+
+<span style="color: #AF00DB">switch</span><span style="color: #000000"> (</span><span style="color: #001080">action</span><span style="color: #000000">.</span><span style="color: #001080">type</span><span style="color: #000000">) {</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">case</span><span style="color: #000000"> </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">SAVE_AND_SHOW_LOADER</span><span style="color: #000000">: {</span>
+<span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        ...</span><span style="color: #001080">state</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">isLoading:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">currentSearchText:</span>
+<span style="color: #000000">          </span><span style="color: #001080">action</span><span style="color: #000000">.</span><span style="color: #001080">payload</span><span style="color: #000000">.</span><span style="color: #001080">searchText</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">searchType:</span><span style="color: #000000"> </span><span style="color: #001080">action</span><span style="color: #000000">.</span><span style="color: #001080">payload</span><span style="color: #000000">.</span><span style="color: #001080">searchType</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">error:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">          </span><span style="color: #001080">hasError:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span><span style="color: #000000">,</span>
+<span style="color: #000000">          </span><span style="color: #001080">message:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">      };</span>
+<span style="color: #000000">    }</span>
+
+<span style="color: #000000">    </span><span style="color: #AF00DB">case</span><span style="color: #000000"> </span><span style="color: #001080">ActionsEnum</span><span style="color: #000000">.</span><span style="color: #0070C1">LOAD_FROM_HISTORY</span><span style="color: #000000">: {</span>
+<span style="color: #000000">      </span><span style="color: #AF00DB">return</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        ...</span><span style="color: #001080">state</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">isLoading:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">currentSearchText:</span>
+<span style="color: #000000">          </span><span style="color: #001080">action</span><span style="color: #000000">.</span><span style="color: #001080">payload</span><span style="color: #000000">.</span><span style="color: #001080">searchText</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">searchType:</span><span style="color: #000000"> </span><span style="color: #001080">action</span><span style="color: #000000">.</span><span style="color: #001080">payload</span><span style="color: #000000">.</span><span style="color: #001080">searchType</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">usersToDisplay:</span>
+<span style="color: #000000">          </span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">locallyStoredUsers</span><span style="color: #000000">.</span><span style="color: #795E26">find</span><span style="color: #000000">(</span>
+<span style="color: #000000">            (</span><span style="color: #001080">element</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span>
+<span style="color: #000000">              </span><span style="color: #001080">element</span><span style="color: #000000">.</span><span style="color: #001080">searchText</span><span style="color: #000000">.</span><span style="color: #795E26">toLowerCase</span><span style="color: #000000">() ==</span>
+<span style="color: #000000">              </span><span style="color: #001080">action</span><span style="color: #000000">.</span><span style="color: #001080">payload</span><span style="color: #000000">.</span><span style="color: #001080">searchText</span><span style="color: #000000">.</span><span style="color: #795E26">toLowerCase</span><span style="color: #000000">()</span>
+<span style="color: #000000">          )?.</span><span style="color: #001080">users</span><span style="color: #000000"> || [],</span>
+<span style="color: #000000">        </span><span style="color: #001080">repositoriesToDisplay:</span>
+<span style="color: #000000">          </span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">locallyStoredRepositories</span><span style="color: #000000">.</span><span style="color: #795E26">find</span><span style="color: #000000">(</span>
+<span style="color: #000000">            (</span><span style="color: #001080">element</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span>
+<span style="color: #000000">              </span><span style="color: #001080">element</span><span style="color: #000000">.</span><span style="color: #001080">searchText</span><span style="color: #000000">.</span><span style="color: #795E26">toLowerCase</span><span style="color: #000000">() ==</span>
+<span style="color: #000000">              </span><span style="color: #001080">action</span><span style="color: #000000">.</span><span style="color: #001080">payload</span><span style="color: #000000">.</span><span style="color: #001080">searchText</span><span style="color: #000000">.</span><span style="color: #795E26">toLowerCase</span><span style="color: #000000">()</span>
+<span style="color: #000000">          )?.</span><span style="color: #001080">users</span><span style="color: #000000"> || [],</span>
+<span style="color: #000000">        </span><span style="color: #001080">error:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">          </span><span style="color: #001080">hasError:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span><span style="color: #000000">,</span>
+<span style="color: #000000">          </span><span style="color: #001080">message:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">      };</span>
+<span style="color: #000000">    }</span>
+<span style="color: #000000">}</span>
+<span style="color: #000000">....</span>
+</code></pre>
+				<hr>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<a href="#prerequisite" id="prerequisite" style="color: inherit; text-decoration: none;">
+					<h3>Prerequisite</h3>
+				</a>
+				<pre><code><span style="color: #000000">-- </span><span style="color: #001080">Node</span><span style="color: #000000">.</span><span style="color: #001080">js</span>
+<span style="color: #000000">-- </span><span style="color: #001080">npm</span>
+</code></pre>
+				<p>In the project directory, you can run: </p>
+				<a href="#clone-the-repo" id="clone-the-repo" style="color: inherit; text-decoration: none;">
+					<h3>clone the repo</h3>
+				</a>
+				<blockquote>
+					<p>git clone <code>repo-url</code></p>
+				</blockquote>
+				<a href="#install-npm-packages" id="install-npm-packages" style="color: inherit; text-decoration: none;">
+					<h3>Install npm packages</h3>
+				</a>
+				<blockquote>
+					<p>npm i</p>
+				</blockquote>
+				<a href="#npm-start" id="npm-start" style="color: inherit; text-decoration: none;">
+					<h3><code>npm start</code></h3>
+				</a>
+				<p>Runs the app in the development mode.<br>Open <a href="http://localhost:3000">http://localhost:3000</a> to view it in the browser.</p>
+				<p>The page will reload if you make edits.<br>You will also see any lint errors in the console.</p>
+				<a href="#npm-test" id="npm-test" style="color: inherit; text-decoration: none;">
+					<h3><code>npm test</code></h3>
+				</a>
+				<p>Launches the test runner in the interactive watch mode.<br>See the section about <a href="https://facebook.github.io/create-react-app/docs/running-tests">running tests</a> for more information.</p>
+				<a href="#npm-run-build" id="npm-run-build" style="color: inherit; text-decoration: none;">
+					<h3><code>npm run build</code></h3>
+				</a>
+				<p>Builds the app for production to the <code>build</code> folder.<br>It correctly bundles React in production mode and optimizes the build for the best performance.</p>
+				<p>The build is minified and the filenames include the hashes.<br>Your app is ready to be deployed!</p>
+				<p>See the section about <a href="https://facebook.github.io/create-react-app/docs/deployment">deployment</a> for more information.</p>
+				<a href="#npm-run-eject" id="npm-run-eject" style="color: inherit; text-decoration: none;">
+					<h3><code>npm run eject</code></h3>
+				</a>
+				<p><strong>Note: this is a one-way operation. Once you <code>eject</code>, you can’t go back!</strong></p>
+				<p>If you aren’t satisfied with the build tool and configuration choices, you can <code>eject</code> at any time. This command will remove the single build dependency from your project.</p>
+				<p>Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except <code>eject</code> will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.</p>
+				<p>You don’t have to ever use <code>eject</code>. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.</p>
+				<a href="#learn-more" id="learn-more" style="color: inherit; text-decoration: none;">
+					<h2>Learn More</h2>
+				</a>
+				<p>You can learn more in the <a href="https://facebook.github.io/create-react-app/docs/getting-started">Create React App documentation</a>.</p>
+				<p>To learn React, check out the <a href="https://reactjs.org/">React documentation</a>.</p>
+				<hr>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

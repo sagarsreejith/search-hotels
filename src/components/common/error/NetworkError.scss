@@ -1,0 +1,10 @@
+@import "../empty-result/EmptyResult.scss";
+
+.network-error {
+  @extend .empty-result;
+  flex-direction: column;
+  align-items: center;
+  .error-message {
+    color: red;
+  }
+}

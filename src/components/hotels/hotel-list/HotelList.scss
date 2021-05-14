@@ -1,0 +1,30 @@
+@import '../../../scss/variables';
+@import '../../../scss/layout';
+
+.sort-section {
+  @extend .two-column;
+  height: auto;
+  align-items: center;
+  margin-bottom: 10px;
+  div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    div {
+      cursor: pointer;
+      padding: 10px 30px;
+      border: 2px solid $border-color;
+    }
+  }
+  .active {
+    background-color: $active-bg-color;
+    -moz-box-shadow: $gray-300-shadow;
+    -webkit-box-shadow: $gray-300-shadow;
+    box-shadow: $gray-300-shadow;
+  }
+}
+
+.hotel-list {
+  @extend .two-column;
+}
