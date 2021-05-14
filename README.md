@@ -1,6 +1,9 @@
-## GitHub Search
+## Hotel Search
 
 The main goal of the project is, to create a sample project in [React](https://reactjs.org/) with typscript. Based on user date range input, fetch `Hotel` list from mocky API and store the result in the `redux-store`.
+
+![Project Screenshot](/src/__mocks_/screens/application_screen_shot_desktop.png)
+Format: ![Desktop View](https://raw.githubusercontent.com/sagarsreejith/search-hotels/master/src/__mocks__/screens/application_screen_shot_desktop.png)
 
 ---
 ## Libraries used in this project
