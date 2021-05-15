@@ -61,9 +61,9 @@ export const toDateIsVaid = (
 /**
  *
  * `filterHotelListbasedOnAvailableDate` function
- * filter the hotel list based on from date and hotel 
+ * filter the hotel list based on from date and hotel
  * available_on date.
- * 
+ *
  * @param {Hotel[]} hotelList as first param
  * @param {string} fromDate as second param
  *
@@ -76,12 +76,14 @@ export const filterHotelListbasedOnAvailableDate = (
 ): Hotel[] => {
   return hotelList.filter((hotel) => {
     return moment(
+      fromDate
+    ).isSameOrAfter(
       moment(
         hotel?.available_on
       ).format(
         APP_CONSTANTS.DATE_FORMAT
       )
-    ).isSameOrAfter(fromDate);
+    );
   });
 };
 

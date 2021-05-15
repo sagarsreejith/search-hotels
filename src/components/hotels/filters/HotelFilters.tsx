@@ -11,7 +11,16 @@ import {
   Filters,
 } from '../../../types';
 import './HotelFilters.scss';
+import searchIcon from './icons/search-icon.svg';
 
+/**
+ * HotelFilter, which will holda the filter inputs
+ * for filtering the hotel result.
+ *
+ * @param {AppState} state - first param
+ *
+ * @return {JSX.Element}
+ */
 export const HotelFilter = (
   state: AppState
 ) => {
@@ -73,7 +82,10 @@ export const HotelFilter = (
   return (
     <div className='filter-section'>
       <div>
-      <img src="assets/images/search-icon.svg" alt="" />
+        <img
+          src={searchIcon}
+          alt='Search Icon'
+        />
         <input
           type='text'
           name='hotel-name'

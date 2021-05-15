@@ -6,6 +6,15 @@ import { SearchFrom } from './search/SearchForm';
 import EmptyResult from '../common/empty-result/EmptyResult';
 import './Hotels.scss';
 
+/**
+ * Hotels, is the definition of Hotel component
+ * which will hold the all related components
+ * based on hotelLis and search inputs.
+ *
+ * @param {AppState} appState - first param
+ *
+ * @return {JSX.Element}
+ */
 export const Hotels = () => {
   const appState = useSelector(
     (state: AppState) => state
