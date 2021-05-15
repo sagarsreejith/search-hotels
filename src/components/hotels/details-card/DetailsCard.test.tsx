@@ -131,5 +131,10 @@ test('Checking `City` is to the props label name + hotl name', () => {
   ).toEqual(
     'City: ' +
       mockHotelCardDetails?.hotel?.city
+        ?.charAt(0)
+        .toUpperCase() +
+      mockHotelCardDetails?.hotel?.city?.slice(
+        1
+      ) || 'NIL'
   );
 });

@@ -37,7 +37,11 @@ export const HotelDetails = (
               .CITY
           }
         </strong>
-        {props?.hotel.city}
+        {props?.hotel?.city
+          ?.charAt(0)
+          .toUpperCase() +
+          props?.hotel.city?.slice(1) ||
+          'NIL'}
       </div>
     </div>
   );
